@@ -1,14 +1,183 @@
+@import url('https://fonts.googleapis.com/css2?family=Parisienne&display=swap');
+
 .App {
   min-height: 100vh;
   min-width: 100vw;
   width: 100vw;
   height: 100vh;
-  background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1500&q=80');
+  background-image: url('/public/background.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   margin: 0;
   padding: 0;
+}
+
+.parisienne-regular {
+  font-family: "Parisienne", cursive;
+  font-weight: 400;
+  font-style: normal;
+  color: lightslategrey
+}
+
+.moon-legs-header {
+  position: absolute;
+  top: 10vh;
+  left: 10vw;
+  font-size: 100px;
+  color: #403E25;
+  font-weight: 700;
+  text-shadow: 0 4px 32px rgba(0,0,0,0.7);
+  margin: 0;
+  line-height: 1;
+  z-index: 2;
+}
+
+.audio-list {
+  list-style: none;
+  padding-left: 20px;
+  padding-top: 0;
+  padding-right: 0;
+  padding-bottom: 0;
+  margin: 0 0 0 150px;
+  width: 60vw;
+  max-width: 500px;
+  position: relative;
+  top: calc(100px + 125px); /* 100px header height + 125px gap for more space */
+  height: 60vh;
+  overflow-y: auto;
+  /* border: 1px solid #5A7B74; */
+  border-radius: 8px;
+  background: rgba(255,255,255,0.03);
+  scrollbar-width: none; /* Firefox */
+}
+
+/* .audio-list::after {
+  content: none;
+} */
+
+.audio-list:hover {
+  scrollbar-width: thin; /* Firefox */
+}
+
+.audio-list::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
+.audio-list:hover::-webkit-scrollbar {
+  width: 8px;
+  background: rgba(90,123,116,0.08);
+}
+
+.audio-list:hover::-webkit-scrollbar-thumb {
+  background: #5A7B74;
+  border-radius: 8px;
+}
+
+.audio-list-item {
+  margin: 16px 0;
+  padding: 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.audio-list-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  /* justify-content: flex-end; */
+  position: relative;
+}
+
+.play-icon {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s;
+  margin-right: 8px;
+}
+
+.audio-list-item:hover .play-icon,
+.play-icon.playing {
+  opacity: 1;
+}
+
+.audio-title {
+  font-size: 1.1rem;
+  color: #99a8a0;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  text-align: left;
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+}
+
+.audio-title.active {
+  background: rgba(90, 123, 116, 0.4);
+  border-radius: 6px;
+  padding: 2px 8px;
+}
+
+.audio-title-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.progress-bar-container {
+  height: 6px;
+  background: rgba(90,123,116,0.15);
+  border-radius: 4px;
+  margin-top: 15px;
+  overflow: hidden;
+  width: 100%;
+  min-width: 40px;
+  max-width: 100%;
+  position: relative;
+  left: 0;
+}
+
+.audio-title.active + .progress-bar-container {
+  width: 100%;
+  min-width: unset;
+  max-width: unset;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #5A7B74 0%, #8ec6b7 100%);
+  border-radius: 4px;
+  transition: width 0.2s;
+}
+
+/* .audio-list-container {
+  position: relative;
+} */
+
+.song-list-arrow {
+  /* position: absolute; */
+  /* left: 50%; */
+  /* transform: translateX(-50%); */
+  /* bottom: 0; */
+  opacity: 0;
+  transition: opacity 0.2s;
+  font-size: 22px;
+  color: #5A7B74;
+  line-height: 1;
+  background: transparent;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.audio-list:hover ~ .song-list-arrow {
+  opacity: 1;
 }
 
 /* Removed unused styles for .App-logo, .App-header, .App-link, and @keyframes App-logo-spin */
